@@ -11,10 +11,11 @@ final GoRouter router = GoRouter(
       ),
     ),
     GoRoute(
-      path: '/:sendUserId/:sendUserName',
+      path: '/user',
       builder: (context, state) {
-        final sendUserId = state.pathParameters["sendUserId"].toString();
-        final sendUserName = state.pathParameters["sendUserName"].toString();
+        final sendUserId = state.uri.queryParameters["sendUserId"].toString();
+        final sendUserName =
+            state.uri.queryParameters["sendUserName"].toString();
         return InvitationHome(
           sendUserId: sendUserId,
           sendUserName: sendUserName,

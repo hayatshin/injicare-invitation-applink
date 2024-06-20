@@ -88,95 +88,93 @@ class _InvitationHomeState extends State<InvitationHome>
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            width: size.width,
-            height: size.height - statusBarHeight,
-            color: const Color(0xFFFF2D78).withOpacity(0.15),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 20,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AnimatedBuilder(
-                    animation: _animationController,
-                    builder: (context, child) {
-                      return Transform.translate(
-                        offset: Offset(0, _animation.value),
-                        child: Image.asset(
-                          "assets/invitation.png",
-                        ),
-                      );
-                    },
-                  ),
-                  Flexible(
-                    child: Text(
-                      "${widget.sendUserName} 님이\n인지케어에 초대했습니다.",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Color(0xFFFF2D78),
-                        fontWeight: FontWeight.w900,
+        child: Container(
+          width: size.width,
+          height: size.height - statusBarHeight,
+          color: const Color(0xFFFF2D78).withOpacity(0.15),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 20,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AnimatedBuilder(
+                  animation: _animationController,
+                  builder: (context, child) {
+                    return Transform.translate(
+                      offset: Offset(0, _animation.value),
+                      child: Image.asset(
+                        "assets/invitation.png",
                       ),
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.visible,
+                    );
+                  },
+                ),
+                Flexible(
+                  child: Text(
+                    "${widget.sendUserName} 님이\n인지케어에 초대했습니다.",
+                    style: const TextStyle(
+                      fontSize: 16,
+                      color: Color(0xFFFF2D78),
+                      fontWeight: FontWeight.w900,
                     ),
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.visible,
                   ),
-                  const Spacer(),
-                  const Text(
-                    "시니어들의 즐거운 소통 시작해볼까요?",
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: Color(0xff333333),
-                      fontWeight: FontWeight.w400,
+                ),
+                const Spacer(),
+                const Text(
+                  "시니어들의 즐거운 소통 시작해볼까요?",
+                  style: TextStyle(
+                    fontSize: 11,
+                    color: Color(0xff333333),
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                GestureDetector(
+                  onTap: _launchURL,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFFF2D78),
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  GestureDetector(
-                    onTap: _launchURL,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFFF2D78),
-                        borderRadius: BorderRadius.circular(10),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 18,
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 18,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text(
-                              "다운로드 받기",
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w800,
-                              ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "다운로드 받기",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w800,
                             ),
-                            ColorFiltered(
-                              colorFilter: const ColorFilter.mode(
-                                Colors.white,
-                                BlendMode.srcIn,
-                              ),
-                              child: SvgPicture.asset(
-                                "assets/svg/chevron-right-solid.svg",
-                                width: 12,
-                              ),
+                          ),
+                          ColorFiltered(
+                            colorFilter: const ColorFilter.mode(
+                              Colors.white,
+                              BlendMode.srcIn,
                             ),
-                          ],
-                        ),
+                            child: SvgPicture.asset(
+                              "assets/svg/chevron-right-solid.svg",
+                              width: 12,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
