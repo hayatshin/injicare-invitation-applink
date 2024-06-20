@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:injicare_invitation_applink/main.dart';
 
 final GoRouter router = GoRouter(
+  initialLocation: '/',
   routes: [
     GoRoute(
       path: '/',
@@ -11,6 +12,7 @@ final GoRouter router = GoRouter(
       ),
     ),
     GoRoute(
+      name: "user",
       path: '/user',
       builder: (context, state) {
         final sendUserId = state.uri.queryParameters["sendUserId"].toString();
