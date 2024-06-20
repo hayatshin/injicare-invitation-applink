@@ -53,7 +53,7 @@ class _InvitationHomeState extends State<InvitationHome>
   void initState() {
     super.initState();
 
-    _domain = "https://hayatshin.github.io/${widget.sendUserId}";
+    _domain = "https://hayatshin.github.io/#/${widget.sendUserId}";
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1500),
