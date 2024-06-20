@@ -20,7 +20,10 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const InvitationHome(),
+      home: const InvitationHome(
+        sendUserId: "",
+        sendUserName: "",
+      ),
     );
   }
 }
