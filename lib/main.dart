@@ -43,7 +43,7 @@ class InvitationHome extends StatefulWidget {
 
 class _InvitationHomeState extends State<InvitationHome>
     with SingleTickerProviderStateMixin {
-  final String _domain = "https://hayatshin.github.io";
+  final String _domain = "https://hayatshin.github.io/";
   late AnimationController _animationController;
   late Animation<double> _animation;
 
