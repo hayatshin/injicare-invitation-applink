@@ -7,7 +7,7 @@ final GoRouter router = GoRouter(
       path: '/',
       builder: (context, state) => const InvitationHome(
         sendUserId: "",
-        sendUserName: "",
+        sendUserName: "-",
       ),
     ),
     GoRoute(
