@@ -1,8 +1,7 @@
 {
   "name": "injicare_invitation_applink",
   "short_name": "injicare_invitation_applink",
-  "start_url": "./",
-  "scope": ".",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#0175C2",
   "theme_color": "#0175C2",
