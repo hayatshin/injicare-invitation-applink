@@ -5,6 +5,7 @@ final GoRouter router = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(
+      name: 'home',
       path: '/',
       builder: (context, state) => const InvitationHome(
         sendUserId: "",
@@ -12,7 +13,7 @@ final GoRouter router = GoRouter(
       ),
     ),
     GoRoute(
-      name: "user",
+      name: 'user',
       path: '/user',
       builder: (context, state) {
         final sendUserId = state.uri.queryParameters["sendUserId"].toString();
