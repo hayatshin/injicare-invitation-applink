@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:injicare_invitation_applink/router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void main() {
@@ -13,7 +14,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: "NanumSquare",
@@ -22,10 +24,10 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const InvitationHome(
-        sendUserId: "",
-        sendUserName: "",
-      ),
+      // home: const InvitationHome(
+      //   sendUserId: "",
+      //   sendUserName: "",
+      // ),
     );
   }
 }
@@ -117,9 +119,11 @@ class _InvitationHomeState extends State<InvitationHome>
                 ),
                 Flexible(
                   child: Text(
-                    "${widget.sendUserName} 님이\n인지케어에 초대했습니다.",
+                    widget.sendUserName == ""
+                        ? "인지케어에\n초대 받았어요!"
+                        : "${widget.sendUserName} 님이\n인지케어에 초대했습니다.",
                     style: const TextStyle(
-                      fontSize: 16,
+                      fontSize: 12,
                       color: Color(0xFFFF2D78),
                       fontWeight: FontWeight.w900,
                     ),
@@ -131,7 +135,7 @@ class _InvitationHomeState extends State<InvitationHome>
                 const Text(
                   "시니어들의 즐거운 소통 시작해볼까요?",
                   style: TextStyle(
-                    fontSize: 11,
+                    fontSize: 8,
                     color: Color(0xff333333),
                     fontWeight: FontWeight.w400,
                   ),
@@ -148,8 +152,8 @@ class _InvitationHomeState extends State<InvitationHome>
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 18,
+                        horizontal: 16,
+                        vertical: 16,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -157,9 +161,9 @@ class _InvitationHomeState extends State<InvitationHome>
                           const Text(
                             "다운로드 하기",
                             style: TextStyle(
-                              fontSize: 11,
+                              fontSize: 9,
                               color: Colors.white,
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                           ColorFiltered(
