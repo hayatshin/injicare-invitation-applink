@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:injicare_invitation_applink/router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -99,7 +98,7 @@ class _InvitationHomeState extends State<InvitationHome>
           color: const Color(0xFFFF2D78).withOpacity(0.15),
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 20,
+              horizontal: 16,
               vertical: 20,
             ),
             child: Column(
@@ -150,30 +149,20 @@ class _InvitationHomeState extends State<InvitationHome>
                       color: const Color(0xFFFF2D78),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(
                         horizontal: 16,
                         vertical: 16,
                       ),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
+                          Text(
                             "다운로드 하기",
                             style: TextStyle(
                               fontSize: 9,
                               color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          ColorFiltered(
-                            colorFilter: const ColorFilter.mode(
-                              Colors.white,
-                              BlendMode.srcIn,
-                            ),
-                            child: SvgPicture.asset(
-                              "assets/svg/chevron-right-solid.svg",
-                              width: 12,
+                              fontWeight: FontWeight.w800,
                             ),
                           ),
                         ],
