@@ -83,12 +83,6 @@ class _InvitationHomeState extends State<InvitationHome>
       final Uri url = Uri.parse(domain);
       await launchUrl(url);
     } catch (e) {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return Text(e.toString());
-        },
-      );
       // ignore: avoid_print
       print("_launchURL -> $e");
     }
