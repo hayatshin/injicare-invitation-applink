@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:injicare_invitation_applink/router.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -75,13 +74,17 @@ class _InvitationHomeState extends State<InvitationHome>
     super.dispose();
   }
 
-  Future<void> _launchURL() async {
-    final domain = Platform.isIOS
-        ? "https://apps.apple.com/app/인지케어-ai-치매-예방-솔루션/id6468271503"
-        : "https://play.google.com/store/apps/details?id=com.chugnchunon.chungchunon_android&hl=ko-KR";
-    final Uri url = Uri.parse(domain);
-    if (!await launchUrl(url)) {
+  void _launchURL() async {
+    try {
+      final domain = defaultTargetPlatform == TargetPlatform.macOS ||
+              defaultTargetPlatform == TargetPlatform.iOS
+          ? "https://apps.apple.com/app/인지케어-ai-치매-예방-솔루션/id6468271503"
+          : "https://play.google.com/store/apps/details?id=com.chugnchunon.chungchunon_android&hl=ko-KR";
+      final Uri url = Uri.parse(domain);
       await launchUrl(url);
+    } catch (e) {
+      // ignore: avoid_print
+      print("_launchURL -> $e");
     }
   }
 
