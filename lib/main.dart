@@ -1,6 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:injicare_invitation_applink/router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void main() {
@@ -12,8 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: router,
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: "NanumSquare",
@@ -22,10 +22,10 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      // home: const InvitationHome(
-      //   sendUserId: "",
-      //   sendUserName: "",
-      // ),
+      home: const InvitationHome(
+        sendUserId: "",
+        sendUserName: "",
+      ),
     );
   }
 }
@@ -45,7 +45,6 @@ class InvitationHome extends StatefulWidget {
 
 class _InvitationHomeState extends State<InvitationHome>
     with SingleTickerProviderStateMixin {
-  String _domain = "https://hayatshin.github.io/";
   late AnimationController _animationController;
   late Animation<double> _animation;
 
@@ -53,7 +52,6 @@ class _InvitationHomeState extends State<InvitationHome>
   void initState() {
     super.initState();
 
-    _domain = "https://hayatshin.github.io/#/${widget.sendUserId}";
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1500),
@@ -77,8 +75,13 @@ class _InvitationHomeState extends State<InvitationHome>
   }
 
   Future<void> _launchURL() async {
-    final Uri url = Uri.parse(_domain);
-    await launchUrl(url);
+    final domain = Platform.isIOS
+        ? "https://apps.apple.com/app/인지케어-ai-치매-예방-솔루션/id6468271503"
+        : "https://play.google.com/store/apps/details?id=com.chugnchunon.chungchunon_android&hl=ko-KR";
+    final Uri url = Uri.parse(domain);
+    if (!await launchUrl(url)) {
+      await launchUrl(url);
+    }
   }
 
   @override
@@ -152,11 +155,11 @@ class _InvitationHomeState extends State<InvitationHome>
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text(
-                            "다운로드 받기",
+                            "다운로드 하기",
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 11,
                               color: Colors.white,
-                              fontWeight: FontWeight.w800,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                           ColorFiltered(
