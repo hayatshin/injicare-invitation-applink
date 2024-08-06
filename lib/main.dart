@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:injicare_invitation_applink/router.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(const MyApp());
@@ -47,6 +46,7 @@ class _InvitationHomeState extends State<InvitationHome>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
+  String targetPlatform = "";
 
   @override
   void initState() {
@@ -80,8 +80,12 @@ class _InvitationHomeState extends State<InvitationHome>
               defaultTargetPlatform == TargetPlatform.iOS
           ? "https://apps.apple.com/app/인지케어-ai-치매-예방-솔루션/id6468271503"
           : "https://play.google.com/store/apps/details?id=com.chugnchunon.chungchunon_android&hl=ko-KR";
-      final Uri url = Uri.parse(domain);
-      await launchUrl(url);
+
+      setState(() {
+        targetPlatform = defaultTargetPlatform.name;
+      });
+      // final Uri url = Uri.parse(domain);
+      // await launchUrl(url);
     } catch (e) {
       // ignore: avoid_print
       print("_launchURL -> $e");
@@ -152,8 +156,8 @@ class _InvitationHomeState extends State<InvitationHome>
                       color: const Color(0xFFFF2D78),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
                         horizontal: 16,
                         vertical: 16,
                       ),
@@ -161,8 +165,8 @@ class _InvitationHomeState extends State<InvitationHome>
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "다운로드 하기",
-                            style: TextStyle(
+                            targetPlatform,
+                            style: const TextStyle(
                               fontSize: 9,
                               color: Colors.white,
                               fontWeight: FontWeight.w800,
